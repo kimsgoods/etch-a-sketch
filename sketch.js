@@ -1,13 +1,44 @@
 const drawArea = document.getElementById("draw-area");
 const resetButton = document.getElementById("reset");
+const sizeButton = document.getElementById("size");
 resetButton.addEventListener("click",resetGrid);
+sizeButton.addEventListener("click",setGridSize)
 
 const grid = document.createElement("div");
 
 let numGrid = 16;
 
+function drawGrid(){
+    drawArea.innerHTML="";
+    for(let i = 0; i< numGrid*numGrid; i++){
+        const grid = document.createElement("div");
+        grid.classList.add("grid");
+        grid.setAttribute("id",i);
+        grid.addEventListener("mouseover",changeColor);
+        drawArea.appendChild(grid);    
+    }  
+}
+
+
+function setGridSize(){
+    numGrid = prompt("Enter Grid Size(2 to 100)");
+    
+    if(numGrid >= 2 && numGrid <= 100){
+        console.log(numGrid);
+        drawArea.setAttribute("style", `grid-template-columns: repeat(${numGrid}, auto)`); 
+        drawGrid();
+    }else{
+        alert("Invalid Size. Try Again!")
+        setGridSize();
+    }
+
+    
+}
+
 function changeColor(e){
-    this.style.backgroundColor=randomizeColor();
+    let newColor = randomizeColor();
+    this.style.backgroundColor = newColor;
+    //this.parentElement.parentElement.parentElement.style.backgroundColor = newColor;
 
 }
 function randomizeColor() {
@@ -19,16 +50,9 @@ function randomizeColor() {
 }
 
 function resetGrid(){
-    location.reload();
+    drawGrid();
 }
 
-for(let i = 0; i< numGrid*numGrid; i++){
-    const grid = document.createElement("div");
-    grid.classList.add("grid");
-    grid.setAttribute("id",i);
-    grid.addEventListener("mouseover",changeColor);
-    drawArea.appendChild(grid);
-}
-
-
-
+window.onload = function() {
+    drawGrid();
+  };
