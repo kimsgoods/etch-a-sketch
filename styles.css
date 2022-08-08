@@ -1,12 +1,41 @@
+*{
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+header{
+    background-color: #10FFFF;
+}
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #10F7FF;
+    text-align: center;
+}
+
 .outer{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 10px;
+    background-color: #72FFFF;
+    height: 100vh;
+}
+.label{
+    display: flex;
+    gap:20px;
+    justify-content: center;
 }
 #draw-area{
     margin: auto;
-    width: 700px;
-    height: 700px;
+    width: 720px;
+    height: 720px;
     background-color:white;
     display: grid;
     grid-template-columns: repeat(16,auto);
@@ -14,21 +43,21 @@
 }
 
 .grid{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding: 0;
     margin: -1px;
 }
 
-.sketched{
-    background-color: black;
-}
-
 h1{
     text-align: center;
+    margin: 0;
 }
+
 button{
     width: 150px;
     align-self: center;
+    margin-bottom: 50px;
+    background-color: #00D7FF;
 }
 
 .buttons{
